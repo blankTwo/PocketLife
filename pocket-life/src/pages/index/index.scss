@@ -1,0 +1,151 @@
+.index {
+  padding: 20px;
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+}
+
+.error {
+  color: #ff4d4f;
+}
+
+/* 宠物信息 */
+.pet-info {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.pet-name {
+  font-size: 24px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.pet-stage {
+  font-size: 14px;
+  color: #666;
+}
+
+/* 状态列表 */
+.status-list {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.status-item:last-child {
+  margin-bottom: 0;
+}
+
+.status-label {
+  width: 60px;
+  font-size: 14px;
+  color: #333;
+}
+
+.status-bar {
+  flex: 1;
+  height: 12px;
+  background: #eee;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 0 12px;
+}
+
+.status-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.3s ease;
+}
+
+.status-value {
+  width: 30px;
+  text-align: right;
+  font-size: 14px;
+  color: #666;
+}
+
+/* 操作按钮 */
+.action-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.action-btn {
+  flex: 1;
+  height: 44px;
+  background: #07c160;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.action-btn[disabled] {
+  background: #ccc;
+}
+
+/* 提示文字 */
+.cooldown-tip,
+.error-tip {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.cooldown-tip {
+  color: #999;
+}
+
+.error-tip {
+  color: #ff4d4f;
+}
+
+/* 死亡状态 */
+.pet-dead {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.dead-title {
+  font-size: 18px;
+  color: #999;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.dead-name {
+  font-size: 24px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 30px;
+}
+
+.reborn-btn {
+  background: #07c160;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Canvas 宠物容器 */
+.pet-canvas-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}

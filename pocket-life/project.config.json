@@ -1,0 +1,16 @@
+{
+  "miniprogramRoot": "./dist",
+  "cloudfunctionRoot": "./cloud",
+  "projectname": "pocket-life",
+  "description": "电子宠物小程序",
+  "appid": "touristappid",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "enhance": false,
+    "compileHotReLoad": false,
+    "postcss": false,
+    "minified": false
+  },
+  "compileType": "miniprogram"
+}
