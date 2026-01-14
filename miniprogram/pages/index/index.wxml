@@ -1,0 +1,79 @@
+<!-- 主页面 -->
+<view class="container">
+  <!-- 宠物名称和阶段 -->
+  <view class="pet-info">
+    <text class="pet-name">{{pet.name}}</text>
+    <text class="pet-stage">{{stageText}}</text>
+  </view>
+
+  <!-- Canvas 宠物展示 -->
+  <view class="canvas-wrapper">
+    <pet-canvas
+      stage="{{pet.stage}}"
+      mood="{{pet.mood}}"
+      hunger="{{pet.hunger}}"
+      energy="{{pet.energy}}"
+      action="{{currentAction}}"
+      dead="{{pet.dead}}"
+    />
+  </view>
+
+  <!-- 状态条 -->
+  <view class="status-bars">
+    <view class="status-item">
+      <text class="status-label">饥饿</text>
+      <view class="status-bar">
+        <view class="status-fill {{hungerLevel}}" style="width: {{pet.hunger}}%"></view>
+      </view>
+      <text class="status-value">{{pet.hunger}}</text>
+    </view>
+
+    <view class="status-item">
+      <text class="status-label">心情</text>
+      <view class="status-bar">
+        <view class="status-fill {{moodLevel}}" style="width: {{pet.mood}}%"></view>
+      </view>
+      <text class="status-value">{{pet.mood}}</text>
+    </view>
+
+    <view class="status-item">
+      <text class="status-label">精力</text>
+      <view class="status-bar">
+        <view class="status-fill {{energyLevel}}" style="width: {{pet.energy}}%"></view>
+      </view>
+      <text class="status-value">{{pet.energy}}</text>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-buttons" wx:if="{{!pet.dead}}">
+    <button
+      class="action-btn feed-btn {{cooldown ? 'disabled' : ''}}"
+      disabled="{{cooldown || loading}}"
+      bindtap="handleFeed"
+    >喂食</button>
+
+    <button
+      class="action-btn play-btn {{cooldown ? 'disabled' : ''}}"
+      disabled="{{cooldown || loading}}"
+      bindtap="handlePlay"
+    >玩耍</button>
+
+    <button
+      class="action-btn sleep-btn {{cooldown ? 'disabled' : ''}}"
+      disabled="{{cooldown || loading}}"
+      bindtap="handleSleep"
+    >睡觉</button>
+  </view>
+
+  <!-- 死亡状态 -->
+  <view class="dead-panel" wx:if="{{pet.dead}}">
+    <text class="dead-text">你的宠物已经离开了...</text>
+    <button class="reborn-btn" bindtap="handleReborn">重新开始</button>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading-mask" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+</view>

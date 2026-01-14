@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "pet-canvas": "/components/pet-canvas/pet-canvas"
+  }
+}

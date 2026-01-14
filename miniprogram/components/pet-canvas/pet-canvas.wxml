@@ -1,0 +1,7 @@
+<!-- 宠物 Canvas 组件 -->
+<canvas
+  type="2d"
+  id="petCanvas"
+  class="pet-canvas"
+  style="width: 300px; height: 300px;"
+/>

@@ -1,0 +1,4 @@
+/* 宠物 Canvas 组件样式 */
+.pet-canvas {
+  display: block;
+}

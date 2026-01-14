@@ -1,0 +1,166 @@
+/* 主页面样式 */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 30rpx;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* 宠物信息 */
+.pet-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.pet-name {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.pet-stage {
+  font-size: 26rpx;
+  color: #888;
+  margin-top: 8rpx;
+}
+
+/* Canvas 容器 */
+.canvas-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40rpx;
+}
+
+/* 状态条 */
+.status-bars {
+  width: 100%;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.status-label {
+  width: 80rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.status-bar {
+  flex: 1;
+  height: 24rpx;
+  background-color: #e0e0e0;
+  border-radius: 12rpx;
+  overflow: hidden;
+  margin: 0 16rpx;
+}
+
+.status-fill {
+  height: 100%;
+  border-radius: 12rpx;
+  transition: width 0.3s ease;
+}
+
+/* 状态等级颜色 */
+.status-fill.good {
+  background-color: #4CAF50;
+}
+
+.status-fill.normal {
+  background-color: #FF9800;
+}
+
+.status-fill.danger {
+  background-color: #f44336;
+}
+
+.status-value {
+  width: 60rpx;
+  font-size: 26rpx;
+  color: #333;
+  text-align: right;
+}
+
+/* 操作按钮 */
+.action-buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 40rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+.action-btn {
+  flex: 1;
+  margin: 0 10rpx;
+  padding: 24rpx 0;
+  border-radius: 16rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #fff;
+  border: none;
+}
+
+.action-btn.disabled {
+  opacity: 0.5;
+}
+
+.feed-btn {
+  background-color: #FF6B6B;
+}
+
+.play-btn {
+  background-color: #4ECDC4;
+}
+
+.sleep-btn {
+  background-color: #9B59B6;
+}
+
+/* 死亡面板 */
+.dead-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60rpx;
+}
+
+.dead-text {
+  font-size: 32rpx;
+  color: #999;
+  margin-bottom: 30rpx;
+}
+
+.reborn-btn {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 24rpx 60rpx;
+  border-radius: 16rpx;
+  font-size: 30rpx;
+  border: none;
+}
+
+/* 加载遮罩 */
+.loading-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  color: #666;
+}
