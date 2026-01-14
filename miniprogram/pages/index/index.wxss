@@ -1,166 +1,430 @@
-/* 主页面样式 */
-.container {
+/* ==================== 主页面样式 - UI/UX-Pro-Max ==================== */
+
+/* 页面容器 */
+.page-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40rpx 30rpx;
+  padding: var(--space-4) var(--space-4) var(--space-8);
   min-height: 100vh;
   box-sizing: border-box;
+  gap: var(--space-4);
+}
+
+/* ==================== 顶部信息卡片 ==================== */
+.header-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--space-4);
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: 
+    inset 3rpx 3rpx 6rpx rgba(255, 255, 255, 0.8),
+    inset -3rpx -3rpx 6rpx rgba(0, 0, 0, 0.03),
+    8rpx 8rpx 20rpx rgba(0, 0, 0, 0.08);
+}
+
+/* 宠物头像环 */
+.pet-avatar-ring {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--clay-peach) 0%, var(--clay-lilac) 100%);
+  padding: 6rpx;
+  box-shadow: 4rpx 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.pet-avatar-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pet-emoji {
+  font-size: 48rpx;
 }
 
 /* 宠物信息 */
 .pet-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 30rpx;
+  flex: 1;
+  margin-left: var(--space-4);
 }
 
 .pet-name {
-  font-size: 44rpx;
-  font-weight: bold;
-  color: #333;
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: var(--space-1);
 }
 
-.pet-stage {
-  font-size: 26rpx;
-  color: #888;
-  margin-top: 8rpx;
+.pet-stage-badge {
+  display: inline-flex;
+  padding: var(--space-1) var(--space-3);
+  background: linear-gradient(135deg, var(--clay-mint) 0%, var(--clay-blue) 100%);
+  border-radius: var(--radius-full);
 }
 
-/* Canvas 容器 */
-.canvas-wrapper {
+.pet-stage-text {
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  color: var(--text-primary);
+}
+
+/* ==================== 宠物展示卡片 ==================== */
+.pet-display-card {
   width: 100%;
+  padding: var(--space-6);
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: 
+    inset 3rpx 3rpx 6rpx rgba(255, 255, 255, 0.8),
+    inset -3rpx -3rpx 6rpx rgba(0, 0, 0, 0.03),
+    8rpx 8rpx 20rpx rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.canvas-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 40rpx;
+  align-items: center;
 }
 
-/* 状态条 */
-.status-bars {
+/* 装饰圆点 */
+.decoration-dots {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  display: flex;
+  gap: var(--space-2);
+}
+
+.dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: var(--radius-full);
+}
+
+.dot-1 { background: var(--clay-peach); }
+.dot-2 { background: var(--clay-mint); }
+.dot-3 { background: var(--clay-lilac); }
+
+/* ==================== 状态面板卡片 ==================== */
+.status-card {
   width: 100%;
-  padding: 0 20rpx;
-  box-sizing: border-box;
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: 
+    inset 3rpx 3rpx 6rpx rgba(255, 255, 255, 0.8),
+    inset -3rpx -3rpx 6rpx rgba(0, 0, 0, 0.03),
+    8rpx 8rpx 20rpx rgba(0, 0, 0, 0.08);
+  overflow: hidden;
 }
 
-.status-item {
+.status-card-header {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1rpx solid var(--bg-secondary);
+}
+
+.status-card-title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--text-secondary);
+}
+
+.status-list {
+  padding: var(--space-3) var(--space-4);
+}
+
+.status-row {
   display: flex;
   align-items: center;
-  margin-bottom: 20rpx;
+  padding: var(--space-2) 0;
+}
+
+.status-row:not(:last-child) {
+  margin-bottom: var(--space-2);
+}
+
+/* 状态图标 */
+.status-icon-wrapper {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--space-3);
+  box-shadow: 
+    inset 2rpx 2rpx 4rpx rgba(255, 255, 255, 0.6),
+    2rpx 2rpx 6rpx rgba(0, 0, 0, 0.08);
+}
+
+.hunger-icon { background: linear-gradient(135deg, #FFE5E5 0%, #FFCDD2 100%); }
+.mood-icon { background: linear-gradient(135deg, #FCE4EC 0%, #F8BBD9 100%); }
+.energy-icon { background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%); }
+
+.status-icon {
+  font-size: 28rpx;
+}
+
+/* 状态内容 */
+.status-content {
+  flex: 1;
+}
+
+.status-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-1);
 }
 
 .status-label {
-  width: 80rpx;
-  font-size: 28rpx;
-  color: #666;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
 }
 
-.status-bar {
-  flex: 1;
-  height: 24rpx;
-  background-color: #e0e0e0;
-  border-radius: 12rpx;
+.status-value {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+}
+
+.status-value.good { color: var(--status-good); }
+.status-value.normal { color: var(--status-normal); }
+.status-value.danger { color: var(--status-danger); }
+
+/* 状态进度条 */
+.status-track {
+  height: 16rpx;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-full);
   overflow: hidden;
-  margin: 0 16rpx;
+  box-shadow: inset 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.05);
 }
 
 .status-fill {
   height: 100%;
-  border-radius: 12rpx;
-  transition: width 0.3s ease;
+  border-radius: var(--radius-full);
+  transition: width var(--transition-slow) var(--ease-out);
 }
 
-/* 状态等级颜色 */
 .status-fill.good {
-  background-color: #4CAF50;
+  background: linear-gradient(90deg, var(--status-good) 0%, #34D399 100%);
 }
 
 .status-fill.normal {
-  background-color: #FF9800;
+  background: linear-gradient(90deg, var(--status-normal) 0%, #FBBF24 100%);
 }
 
 .status-fill.danger {
-  background-color: #f44336;
+  background: linear-gradient(90deg, var(--status-danger) 0%, #F87171 100%);
 }
 
-.status-value {
-  width: 60rpx;
-  font-size: 26rpx;
-  color: #333;
-  text-align: right;
-}
-
-/* 操作按钮 */
-.action-buttons {
+/* ==================== 操作按钮区域 ==================== */
+.action-panel {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   width: 100%;
-  margin-top: 40rpx;
-  padding: 0 20rpx;
-  box-sizing: border-box;
+  gap: var(--space-3);
+}
+
+.action-btn-wrapper {
+  flex: 1;
 }
 
 .action-btn {
-  flex: 1;
-  margin: 0 10rpx;
-  padding: 24rpx 0;
-  border-radius: 16rpx;
-  font-size: 30rpx;
-  font-weight: 500;
-  color: #fff;
-  border: none;
-}
-
-.action-btn.disabled {
-  opacity: 0.5;
-}
-
-.feed-btn {
-  background-color: #FF6B6B;
-}
-
-.play-btn {
-  background-color: #4ECDC4;
-}
-
-.sleep-btn {
-  background-color: #9B59B6;
-}
-
-/* 死亡面板 */
-.dead-panel {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60rpx;
+  justify-content: center;
+  padding: var(--space-4) var(--space-2);
+  border-radius: var(--radius-xl);
+  border: none;
+  transition: all var(--transition-base) var(--ease-out);
 }
 
-.dead-text {
-  font-size: 32rpx;
-  color: #999;
-  margin-bottom: 30rpx;
-}
-
-.reborn-btn {
-  background-color: #4CAF50;
-  color: #fff;
-  padding: 24rpx 60rpx;
-  border-radius: 16rpx;
-  font-size: 30rpx;
+.action-btn::after {
   border: none;
 }
 
-/* 加载遮罩 */
-.loading-mask {
+.btn-icon {
+  font-size: 40rpx;
+  margin-bottom: var(--space-1);
+}
+
+.btn-text {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: #FFFFFF;
+}
+
+/* 喂食按钮 */
+.feed-btn {
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+  box-shadow: 
+    inset 2rpx 2rpx 4rpx rgba(255, 255, 255, 0.3),
+    4rpx 4rpx 12rpx rgba(255, 107, 107, 0.35);
+}
+
+.feed-btn:active {
+  transform: scale(0.96);
+  box-shadow: inset 3rpx 3rpx 6rpx rgba(0, 0, 0, 0.15);
+}
+
+/* 玩耍按钮 */
+.play-btn {
+  background: linear-gradient(135deg, #4ECDC4 0%, #6EE7DE 100%);
+  box-shadow: 
+    inset 2rpx 2rpx 4rpx rgba(255, 255, 255, 0.3),
+    4rpx 4rpx 12rpx rgba(78, 205, 196, 0.35);
+}
+
+.play-btn:active {
+  transform: scale(0.96);
+  box-shadow: inset 3rpx 3rpx 6rpx rgba(0, 0, 0, 0.15);
+}
+
+/* 睡觉按钮 */
+.sleep-btn {
+  background: linear-gradient(135deg, #9B59B6 0%, #B07CC6 100%);
+  box-shadow: 
+    inset 2rpx 2rpx 4rpx rgba(255, 255, 255, 0.3),
+    4rpx 4rpx 12rpx rgba(155, 89, 182, 0.35);
+}
+
+.sleep-btn:active {
+  transform: scale(0.96);
+  box-shadow: inset 3rpx 3rpx 6rpx rgba(0, 0, 0, 0.15);
+}
+
+/* 禁用状态 */
+.btn-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ==================== 死亡状态面板 ==================== */
+.dead-panel {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: var(--space-6);
+  z-index: 100;
+}
+
+.dead-card {
+  width: 100%;
+  max-width: 560rpx;
+  background: var(--bg-card);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 
+    inset 3rpx 3rpx 6rpx rgba(255, 255, 255, 0.8),
+    0 20rpx 50rpx rgba(0, 0, 0, 0.2);
+}
+
+.dead-emoji {
+  font-size: 80rpx;
+  margin-bottom: var(--space-4);
+}
+
+.dead-title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.dead-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.reborn-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-8);
+  background: linear-gradient(135deg, var(--status-good) 0%, #34D399 100%);
+  border-radius: var(--radius-xl);
+  border: none;
+  box-shadow: 
+    inset 2rpx 2rpx 4rpx rgba(255, 255, 255, 0.3),
+    4rpx 4rpx 12rpx rgba(16, 185, 129, 0.35);
+}
+
+.reborn-btn::after {
+  border: none;
+}
+
+.reborn-btn .btn-icon {
   font-size: 32rpx;
-  color: #666;
+  margin-bottom: 0;
+}
+
+.reborn-btn .btn-text {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: #FFFFFF;
+}
+
+/* ==================== 加载遮罩 ==================== */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.loading-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-6);
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: 
+    inset 3rpx 3rpx 6rpx rgba(255, 255, 255, 0.8),
+    8rpx 8rpx 24rpx rgba(0, 0, 0, 0.1);
+}
+
+.loading-spinner {
+  width: 64rpx;
+  height: 64rpx;
+  border: 6rpx solid var(--bg-secondary);
+  border-top-color: var(--primary);
+  border-radius: var(--radius-full);
+  animation: spin 0.8s linear infinite;
+  margin-bottom: var(--space-3);
+}
+
+.loading-text {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
 }

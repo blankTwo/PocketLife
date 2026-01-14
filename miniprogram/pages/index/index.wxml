@@ -1,79 +1,151 @@
-<!-- 主页面 -->
-<view class="container">
-  <!-- 宠物名称和阶段 -->
-  <view class="pet-info">
-    <text class="pet-name">{{pet.name}}</text>
-    <text class="pet-stage">{{stageText}}</text>
-  </view>
-
-  <!-- Canvas 宠物展示 -->
-  <view class="canvas-wrapper">
-    <pet-canvas
-      stage="{{pet.stage}}"
-      mood="{{pet.mood}}"
-      hunger="{{pet.hunger}}"
-      energy="{{pet.energy}}"
-      action="{{currentAction}}"
-      dead="{{pet.dead}}"
-    />
-  </view>
-
-  <!-- 状态条 -->
-  <view class="status-bars">
-    <view class="status-item">
-      <text class="status-label">饥饿</text>
-      <view class="status-bar">
-        <view class="status-fill {{hungerLevel}}" style="width: {{pet.hunger}}%"></view>
+<!-- 主页面 - UI/UX-Pro-Max 重构 -->
+<view class="page-container">
+  <!-- 顶部信息卡片 -->
+  <view class="header-card slide-in-up">
+    <view class="pet-avatar-ring">
+      <view class="pet-avatar-inner">
+        <text class="pet-emoji">🐣</text>
       </view>
-      <text class="status-value">{{pet.hunger}}</text>
     </view>
-
-    <view class="status-item">
-      <text class="status-label">心情</text>
-      <view class="status-bar">
-        <view class="status-fill {{moodLevel}}" style="width: {{pet.mood}}%"></view>
+    <view class="pet-info">
+      <text class="pet-name">{{pet.name}}</text>
+      <view class="pet-stage-badge">
+        <text class="pet-stage-text">{{stageText}}</text>
       </view>
-      <text class="status-value">{{pet.mood}}</text>
-    </view>
-
-    <view class="status-item">
-      <text class="status-label">精力</text>
-      <view class="status-bar">
-        <view class="status-fill {{energyLevel}}" style="width: {{pet.energy}}%"></view>
-      </view>
-      <text class="status-value">{{pet.energy}}</text>
     </view>
   </view>
 
-  <!-- 操作按钮 -->
-  <view class="action-buttons" wx:if="{{!pet.dead}}">
-    <button
-      class="action-btn feed-btn {{cooldown ? 'disabled' : ''}}"
-      disabled="{{cooldown || loading}}"
-      bindtap="handleFeed"
-    >喂食</button>
-
-    <button
-      class="action-btn play-btn {{cooldown ? 'disabled' : ''}}"
-      disabled="{{cooldown || loading}}"
-      bindtap="handlePlay"
-    >玩耍</button>
-
-    <button
-      class="action-btn sleep-btn {{cooldown ? 'disabled' : ''}}"
-      disabled="{{cooldown || loading}}"
-      bindtap="handleSleep"
-    >睡觉</button>
+  <!-- 宠物展示区域 -->
+  <view class="pet-display-card slide-in-up">
+    <view class="canvas-container">
+      <pet-canvas
+        stage="{{pet.stage}}"
+        mood="{{pet.mood}}"
+        hunger="{{pet.hunger}}"
+        energy="{{pet.energy}}"
+        action="{{currentAction}}"
+        dead="{{pet.dead}}"
+      />
+    </view>
+    <!-- 装饰元素 -->
+    <view class="decoration-dots">
+      <view class="dot dot-1"></view>
+      <view class="dot dot-2"></view>
+      <view class="dot dot-3"></view>
+    </view>
   </view>
 
-  <!-- 死亡状态 -->
-  <view class="dead-panel" wx:if="{{pet.dead}}">
-    <text class="dead-text">你的宠物已经离开了...</text>
-    <button class="reborn-btn" bindtap="handleReborn">重新开始</button>
+  <!-- 状态面板卡片 -->
+  <view class="status-card slide-in-up">
+    <view class="status-card-header">
+      <text class="status-card-title">宠物状态</text>
+    </view>
+    
+    <view class="status-list">
+      <!-- 饥饿度 -->
+      <view class="status-row">
+        <view class="status-icon-wrapper hunger-icon">
+          <text class="status-icon">🍖</text>
+        </view>
+        <view class="status-content">
+          <view class="status-header">
+            <text class="status-label">饥饿度</text>
+            <text class="status-value {{hungerLevel}}">{{pet.hunger}}%</text>
+          </view>
+          <view class="status-track">
+            <view class="status-fill {{hungerLevel}}" style="width: {{pet.hunger}}%"></view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 心情值 -->
+      <view class="status-row">
+        <view class="status-icon-wrapper mood-icon">
+          <text class="status-icon">💖</text>
+        </view>
+        <view class="status-content">
+          <view class="status-header">
+            <text class="status-label">心情值</text>
+            <text class="status-value {{moodLevel}}">{{pet.mood}}%</text>
+          </view>
+          <view class="status-track">
+            <view class="status-fill {{moodLevel}}" style="width: {{pet.mood}}%"></view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 精力值 -->
+      <view class="status-row">
+        <view class="status-icon-wrapper energy-icon">
+          <text class="status-icon">⚡</text>
+        </view>
+        <view class="status-content">
+          <view class="status-header">
+            <text class="status-label">精力值</text>
+            <text class="status-value {{energyLevel}}">{{pet.energy}}%</text>
+          </view>
+          <view class="status-track">
+            <view class="status-fill {{energyLevel}}" style="width: {{pet.energy}}%"></view>
+          </view>
+        </view>
+      </view>
+    </view>
   </view>
 
-  <!-- 加载状态 -->
-  <view class="loading-mask" wx:if="{{loading}}">
-    <text>加载中...</text>
+  <!-- 操作按钮区域 -->
+  <view class="action-panel slide-in-up" wx:if="{{!pet.dead}}">
+    <view class="action-btn-wrapper">
+      <button
+        class="action-btn feed-btn {{cooldown ? 'btn-disabled' : ''}}"
+        disabled="{{cooldown || loading}}"
+        bindtap="handleFeed"
+      >
+        <text class="btn-icon">🍖</text>
+        <text class="btn-text">喂食</text>
+      </button>
+    </view>
+
+    <view class="action-btn-wrapper">
+      <button
+        class="action-btn play-btn {{cooldown ? 'btn-disabled' : ''}}"
+        disabled="{{cooldown || loading}}"
+        bindtap="handlePlay"
+      >
+        <text class="btn-icon">🎮</text>
+        <text class="btn-text">玩耍</text>
+      </button>
+    </view>
+
+    <view class="action-btn-wrapper">
+      <button
+        class="action-btn sleep-btn {{cooldown ? 'btn-disabled' : ''}}"
+        disabled="{{cooldown || loading}}"
+        bindtap="handleSleep"
+      >
+        <text class="btn-icon">💤</text>
+        <text class="btn-text">睡觉</text>
+      </button>
+    </view>
+  </view>
+
+  <!-- 死亡状态面板 -->
+  <view class="dead-panel fade-in" wx:if="{{pet.dead}}">
+    <view class="dead-card">
+      <text class="dead-emoji">😢</text>
+      <text class="dead-title">宠物离开了</text>
+      <text class="dead-desc">你的小伙伴已经去了更好的地方...</text>
+      <button class="reborn-btn" bindtap="handleReborn">
+        <text class="btn-icon">🌟</text>
+        <text class="btn-text">重新开始</text>
+      </button>
+    </view>
+  </view>
+
+  <!-- 加载遮罩 -->
+  <view class="loading-overlay" wx:if="{{loading}}">
+    <view class="loading-card">
+      <view class="loading-spinner"></view>
+      <text class="loading-text">加载中...</text>
+    </view>
   </view>
 </view>

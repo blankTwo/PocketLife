@@ -1,4 +1,14 @@
-/* 宠物 Canvas 组件样式 */
+/* ==================== 宠物 Canvas 组件样式 - UI/UX-Pro-Max ==================== */
+
 .pet-canvas {
   display: block;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    180deg, 
+    rgba(173, 216, 230, 0.15) 0%, 
+    rgba(152, 255, 152, 0.1) 100%
+  );
+  box-shadow: 
+    inset 2rpx 2rpx 6rpx rgba(255, 255, 255, 0.5),
+    inset -2rpx -2rpx 6rpx rgba(0, 0, 0, 0.03);
 }
